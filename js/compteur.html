@@ -1,0 +1,23 @@
+<head>
+	<title>nlefort - js - compteur</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body onload="myCallback();">
+	<h1>compteur</h1>
+	<h2 id="compteur"><h2>
+</body>
+
+
+<script type="text/javascript">
+	var x = 10;
+	var intervalID = window.setInterval(myCallback, 500);
+	var compteur = document.getElementById("compteur");
+	function myCallback()
+	{
+		if (x != -1) {
+			compteur.innerHTML = x;
+			x = x-1;
+		}
+	}
+</script>
