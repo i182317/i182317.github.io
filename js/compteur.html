@@ -14,21 +14,28 @@
 		</ul>
 	</nav>
 
-	
+
 	<h1>compteur</h1>
 	<h2 id="compteur"><h2>
+	<button id="relancer">relancer</button>
 </body>
 
 
 <script type="text/javascript">
 	var x = 10;
-	var intervalID = window.setInterval(myCallback, 500);
-	var compteur = document.getElementById("compteur");
+	var intervalID = window.setInterval(myCallback, 1000);
+	document.getElementById("compteur");
+	document.getElementById("relancer").setEventListener(relancer)
+
 	function myCallback()
 	{
-		if (x != -1) {
-			compteur.innerHTML = x;
-			x = x-1;
-		}
+		if (x == 0) clearInterval(intervalID);
+		compteur.innerHTML = x;
+		x = x-1;
+	}
+
+	function relancer()
+	{
+		var intervalID = window.setInterval(myCallback, 1000);
 	}
 </script>

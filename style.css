@@ -157,3 +157,9 @@ aside li {
 footer {
   margin-top: 10px;
 }
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}

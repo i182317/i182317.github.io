@@ -14,7 +14,30 @@
 		</ul>
 	</nav>
 
-	
-	<h1>square</h1>
-	<div class="square"></div>
-</body>	
+
+	<h1>carre</h1>
+	<canvas id="canvasSquare" width="1000px" height="300px"></canvas>
+
+
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById('canvasSquare')
+	var x = 100, y = 100;
+	if (canvas.getContext) {
+		var ctx = canvas.getContext('2d')
+
+	}
+			
+	ctx.fillRect(x, y, 100, 100);
+
+	var temp = window.setInterval(deplacement, 60);
+
+	function deplacement() {
+		ctx.clearRect(x, y, canvas.width, canvas.height);
+		x = x+10;
+		ctx.fillRect(x, y, 100, 100);
+	}
+
+
+</script> 
