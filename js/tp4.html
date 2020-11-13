@@ -1,0 +1,98 @@
+<head>
+	<title>nlefort - js - deplacement carre</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+	<nav>
+		<ul>
+			<li><a href="../index.html">Accueil</a></li>
+			<li><a href="../html/accueilhtml.html">HTML</a></li>
+			<li><a href="../php/accueilphp.html">PHP</a></li>
+			<li><a href="../vue/accueilvue.html">Vue</a></li>
+		</ul>
+	</nav>
+
+
+	<h1>carre</h1>
+	<canvas id="canvasSquare" width="1000px" height="650px"></canvas>
+	<button id="relancer">relancer</button>
+
+
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById('canvasSquare')
+	var x = 0, y = 100;
+	var xdeux = 0, ydeux = 300;
+	var xtrois = 0, ytrois = 500;
+	var tempUn;
+	var tempsDeux;
+	var tempTrois;
+	if (canvas.getContext) {
+		var ctx = canvas.getContext('2d')
+	}
+			
+	ctx.fillStyle='red'
+	ctx.fillRect(x, y, 100, 100);
+
+	ctx.fillStyle='red'
+	ctx.fillRect(xdeux, ydeux, 100, 100);
+
+	ctx.fillStyle='red'
+	ctx.fillRect(xtrois, ytrois, 100, 100);
+
+	var compt = 0;
+	var sec = window.setInterval(debut, 1000);
+
+	function debut() {
+		if (compt = 0) {
+			 tempsUn = window.setInterval(deplacementUn, 10);
+		}
+
+		if (compt = 1) {
+			 tempsDeux = window.setInterval(deplacementDeux, 10);
+		}
+
+		if (compt = 4) {
+			clearInterval(sec);
+			 tempsTrois = window.setInterval(deplacementTrois, 10);
+		}
+		compt = compt+1;
+	}
+
+	function deplacementUn() {
+		if (x == canvas.width) {
+			clearInterval(tempsUn);
+		}
+		ctx.clearRect(x, y, 100, 100);
+		x = x+10;
+		ctx.fillRect(x, y, 100, 100);
+	}
+
+	function deplacementDeux() {
+		if (xdeux == canvas.width) {
+			clearInterval(tempsDeux);
+		}
+		ctx.clearRect(xdeux, ydeux, 100, 100);
+		xdeux = xdeux+10;
+		ctx.fillRect(xdeux, ydeux, 100, 100);
+	}
+
+	function deplacementTrois() {
+		if (xtrois == canvas.width) {
+			clearInterval(tempsTrois);
+		}
+		ctx.clearRect(xtrois, ytrois, 100, 100);
+		xtrois = xtrois+10;
+		ctx.fillRect(xtrois, ytrois, 100, 100);
+	}
+
+	var buttonRelancer = document.getElementById('relancer');
+	buttonRelancer.addEventListener('click', function(event) {
+		x = 0;
+	})
+
+
+</script> 

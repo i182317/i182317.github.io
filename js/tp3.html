@@ -32,7 +32,16 @@
 	ctx.fillStyle='red'
 	ctx.fillRect(x, y, 100, 100);
 
-	var temp = window.setInterval(deplacement, 60);
+	var compt = 0;
+	var deuxsec = window.setInterval(debut, 2000);
+
+	function debut() {
+		if (compt = 2) {
+			clearInterval(deuxsec);
+			var temp = window.setInterval(deplacement, 60);
+		}
+		compt = compt+1;
+	}
 
 	function deplacement() {
 		if (x == canvas.width) {
