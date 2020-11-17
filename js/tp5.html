@@ -1,0 +1,102 @@
+<head>
+	<title>nlefort - js - deplacement carre</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+	<nav>
+		<ul>
+			<li><a href="../index.html">Accueil</a></li>
+			<li><a href="../html/accueilhtml.html">HTML</a></li>
+			<li><a href="../php/accueilphp.html">PHP</a></li>
+			<li><a href="../vue/accueilvue.html">Vue</a></li>
+		</ul>
+	</nav>
+
+
+	<h1>carre</h1>
+	<canvas id="canvasSquare" width="1000px" height="2050px"></canvas>
+	<button id="relancer">relancer</button>
+
+
+</body>
+
+<script type="text/javascript">
+	var canvas = document.getElementById('canvasSquare')
+
+	class Square {
+		constructor(x, y, ctx, start) {
+			this.x = x;
+			this.y = y;
+			this.ctx = ctx;
+			this.start = start;
+			this.ctx.fillStyle='red'
+			this.ctx.fillRect(x, y, 100, 100);
+		}
+
+		move(compt) {
+			this.erase(compt);
+			this.update(compt);
+			this.draw(compt);
+		}
+
+		erase(compt) {
+			if (compt >= this.start) {
+				this.ctx.clearRect(this.x, this.y, 100, 100);
+			}
+		}
+
+		update(compt) {
+			if (compt >= this.start) {
+				this.x = this.x + 20;
+			}
+		}
+
+		draw(compt) {
+			if (compt >= this.start) {
+				this.ctx.fillRect(this.x, this.y, 100, 100);
+			}
+		}
+	}
+
+	if (canvas.getContext) {
+		var ctx = canvas.getContext('2d')
+	}
+
+	var squareOne = new Square(0, 100, ctx, 0);
+	var squareTwo = new Square(0, 300, ctx, 2);
+	var squareThree = new Square(0, 500, ctx, 4);
+	var squareFour = new Square(0, 700, ctx, 6);
+	var squareFive = new Square(0, 900, ctx, 8);
+	var squareSix = new Square(0, 1100, ctx, 10);
+	var squareSeven = new Square(0, 1300, ctx, 12);
+	var squareEight = new Square(0, 1500, ctx, 14);
+	var squareNine = new Square(0, 1700, ctx, 16);
+	var squareTen = new Square(0, 1900, ctx, 18);
+
+	var compteur = 0;
+	var sec = window.setInterval(chrono, 500);
+
+	function chrono() {
+			squareOne.move(compteur);
+			squareTwo.move(compteur);
+			squareThree.move(compteur);
+			squareFour.move(compteur);
+			squareFive.move(compteur);
+			squareSix.move(compteur);
+			squareSeven.move(compteur);
+			squareEight.move(compteur);
+			squareNine.move(compteur);
+			squareTen.move(compteur);
+		
+		compteur = compteur + 1;
+	}
+
+	var buttonRelancer = document.getElementById('relancer');
+	buttonRelancer.addEventListener('click', function(event) {
+		x = 0;
+	})
+
+
+</script> 
