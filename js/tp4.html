@@ -24,69 +24,66 @@
 
 <script type="text/javascript">
 	var canvas = document.getElementById('canvasSquare')
-	var x = 0, y = 100;
-	var xdeux = 0, ydeux = 300;
-	var xtrois = 0, ytrois = 500;
-	var tempUn;
-	var tempsDeux;
-	var tempTrois;
+
+	class Square {
+		constructor(x, y, ctx, start) {
+			this.x = x;
+			this.y = y;
+			this.ctx = ctx;
+			this.start = start;
+		}
+
+		move(compt) {
+			this.erase(compt);
+			this.update(compt);
+			this.draw(compt);
+		}
+
+		erase(compt) {
+			if (compt >= this.start) {
+				this.ctx.clearRect(this.x, this.y, 100, 100);
+			}
+		}
+
+		update(compt) {
+			if (compt >= this.start) {
+				this.x = this.x + 20;
+			}
+		}
+
+		draw(compt) {
+			if (compt >= this.start) {
+				this.ctx.fillRect(this.x, this.y, 100, 100);
+			}
+		}
+	}
+
 	if (canvas.getContext) {
 		var ctx = canvas.getContext('2d')
 	}
-			
+
+	var squareOne = new Square(0, 100, ctx, 0);
+	var squareTwo = new Square(0, 300, ctx, 1);
+	var squareThree = new Square(0, 500, ctx, 4);
+	
 	ctx.fillStyle='red'
-	ctx.fillRect(x, y, 100, 100);
+	ctx.fillRect(squareOne.x, squareOne.y, 100, 100);
 
 	ctx.fillStyle='red'
-	ctx.fillRect(xdeux, ydeux, 100, 100);
+	ctx.fillRect(squareTwo.x, squareTwo.y, 100, 100);
 
 	ctx.fillStyle='red'
-	ctx.fillRect(xtrois, ytrois, 100, 100);
+	ctx.fillRect(squareThree.x, squareThree.y, 100, 100);
 
-	var compt = 0;
-	var sec = window.setInterval(debut, 1000);
+	var compteur = 0;
+	var sec = window.setInterval(chrono, 1000);
 
-	function debut() {
-		if (compt = 0) {
-			 tempsUn = window.setInterval(deplacementUn, 10);
-		}
-
-		if (compt = 1) {
-			 tempsDeux = window.setInterval(deplacementDeux, 10);
-		}
-
-		if (compt = 4) {
-			clearInterval(sec);
-			 tempsTrois = window.setInterval(deplacementTrois, 10);
-		}
-		compt = compt+1;
-	}
-
-	function deplacementUn() {
-		if (x == canvas.width) {
-			clearInterval(tempsUn);
-		}
-		ctx.clearRect(x, y, 100, 100);
-		x = x+10;
-		ctx.fillRect(x, y, 100, 100);
-	}
-
-	function deplacementDeux() {
-		if (xdeux == canvas.width) {
-			clearInterval(tempsDeux);
-		}
-		ctx.clearRect(xdeux, ydeux, 100, 100);
-		xdeux = xdeux+10;
-		ctx.fillRect(xdeux, ydeux, 100, 100);
-	}
-
-	function deplacementTrois() {
-		if (xtrois == canvas.width) {
-			clearInterval(tempsTrois);
-		}
-		ctx.clearRect(xtrois, ytrois, 100, 100);
-		xtrois = xtrois+10;
-		ctx.fillRect(xtrois, ytrois, 100, 100);
+	function chrono() {
+			squareOne.move(compteur);
+			squareTwo.move(compteur);
+			squareThree.move(compteur);
+		
+		compteur = compteur + 1;
 	}
 
 	var buttonRelancer = document.getElementById('relancer');
