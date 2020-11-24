@@ -1,0 +1,36 @@
+<head>
+	<title>nlefort - js - deplacement carre</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+	<nav>
+		<ul>
+			<li><a href="../index.html">Accueil</a></li>
+			<li><a href="../html/accueilhtml.html">HTML</a></li>
+			<li><a href="../php/accueilphp.html">PHP</a></li>
+			<li><a href="../vue/accueilvue.html">Vue</a></li>
+		</ul>
+	</nav>
+
+
+	<h1>carre</h1>
+	<div id="animatedElem">test</div>
+
+
+</body>
+
+<script type="text/javascript">
+	var elem = document.getElementById("animatedElem");
+	var left = 0;
+	var timer;
+	// Move the element 10px on the right every 16ms
+	timer = setInterval(function() {
+		elem.style.left = ( left += 10 ) + "px";
+		// clear the timer at 400px to stop the animation
+		if ( left > 400 ) {
+			clearInterval( timer );
+		}
+	}, 16);
+</script> 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>nlefort - js - deplacement carre</title>
+	</head>
+
+	<body>
+
+		<canvas id="animatedElem"></canvas>
+
+	</body>
+
+	<script>
+
+		theCanvas = document.getElementById("animatedElem");
+        var ctx = theCanvas.getContext('2d');
+        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+        var i = 0;
+		
+		var mainloop = function() {
+	        drawGame();
+	        i++;
+            if( i > 4){
+                i = 0;
+            }	
+   		};
+
+	    var animFrame = window.requestAnimationFrame ||
+	            window.webkitRequestAnimationFrame ||
+	            window.mozRequestAnimationFrame    ||
+	            window.oRequestAnimationFrame      ||
+	            window.msRequestAnimationFrame     ||
+	            null ;
+
+	    var recursiveAnim = function() {
+	    	console.log("test");
+	        mainloop();
+	        animFrame(recursiveAnim);
+	    };
+
+	    // start the mainloop
+	    animFrame(recursiveAnim);
+
+	    fuction drawGame() {
+            var img = new Image();
+            img.addEventListener('load', function() {
+                ctx.clearRect(0, 0, 128, 128);
+                ctx.drawImage(img, 128*i, 0, 128,128,0,0,128,128 );
+            }, false);
+            img.src="./../src/image/hero_walk_cycle_spritesheet_by_mrnoobtastic-d3defej";
+	    }
+
+	</script>
+</html>
