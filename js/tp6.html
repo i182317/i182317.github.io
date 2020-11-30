@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<title>web worker</title>
+	</header>
+	<script>
+		window.addEventListener('load', () => { 
+      		registerSW(); 
+          
+          var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+          var url = 'https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9EYlGR3a.shu'
+          var options = {
+
+          }
+
+          fetch( cors_api_url + url
+          ).then(function(response){
+              return response.text();
+          }).then(function(text){});
+    	}); 
+  
+      function flattenEvent(e) {
+        let event = {};
+        for(let i = 0; i < e[1].length; i++) {
+          let prop = e[1][i];
+          event[prop[0]] = prop[3];
+          //console.log('e',prop);
+        } 
+        return event;
+      }
+      	function registerSW() {
+    		// Register the Service Worker 
+	    	if ('serviceWorker' in navigator) {
+	  			navigator.serviceWorker.register('/js/serviceworker.js', { scope: '/js/' }).then(function(reg) {
+	    		// registration worked
+	    			console.log('Registration succeeded. Scope is ' + reg.scope);
+	  			}).catch(function(error) {
+	    			// registration failed
+	    			console.log('Registration failed with ' + error);
+	  			});
+			};
+		}
+	</script>
+</html>
